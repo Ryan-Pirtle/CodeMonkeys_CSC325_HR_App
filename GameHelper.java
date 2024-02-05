@@ -7,3 +7,4 @@ public class GameHelper {
         return scanner.nextInt();
     }
 }
+//Sets up the GameHelper class to allow input from the user//

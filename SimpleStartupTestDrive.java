@@ -1,4 +1,5 @@
 public class SimpleStartupTestDrive {
+    
     public static void main(String[] args) {
         SimpleStartup dot = new SimpleStartup();
         int[] locations = {2,3,4};
@@ -12,3 +13,4 @@ public class SimpleStartupTestDrive {
         System.out.println(testResult);
     }
 }
+//Sets up the game Start up and selects location for the target//
