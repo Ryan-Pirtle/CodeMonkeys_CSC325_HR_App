@@ -1,7 +1,14 @@
 public class Person {
     private String name;
     private int age;
-
+     
+    //constructor with mandatory assignment of name and age
+    Person(String name, int age){
+        this.name = name;
+        this.age = age;
+    }
+    
+    //setters
     public void setName(String name) {
         this.name = name;
     }
@@ -9,18 +16,16 @@ public class Person {
     public void setAge(int age){
         this.age = age;
     }
-     
-    Person(String name, int age){
-        this.name = name;
-        this.age = age;
-    }
 
+    //getters
     public int getAge() {
         return age;
     }
     public String getName() {
         return name;
     }
+    
+    //show person to the console
     public void displayDetails(){
         System.out.println("Name: " + name + "Age: " + age);
     }
