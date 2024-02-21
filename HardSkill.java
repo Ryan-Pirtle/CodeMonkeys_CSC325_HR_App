@@ -23,8 +23,10 @@ String getTitle(){
     return(title);    
 }
 //
-String displayDetails(){
-    return (title + ", " + level);
+void displayDetails(){
+    System.out.print("-- Hard Skills --\n"+
+                        "Title: " + getTitle() +
+                        "\nExperience: " + getLevel());
 }
 
 }
