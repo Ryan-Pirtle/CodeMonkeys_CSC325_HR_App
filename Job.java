@@ -43,8 +43,5 @@ public class Job
         System.out.println("Experience: " + experience + " months");
     }
 
-    public static void main(String[] args) {
-        Job myJob = new Job("Software Engineer", 24);
-        myJob.displayDetails();
-    }
+    
 }
