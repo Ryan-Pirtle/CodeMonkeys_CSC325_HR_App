@@ -1,0 +1,47 @@
+﻿Public abstract class Person()
+{
+        void TakesLunch();
+        void ClocksIn();
+        void GetFired();
+
+
+}
+
+
+public class Manager extends Person();
+{
+void hire(personName);
+{
+                        Person personName = new Person();
+                }
+        void fire(personName)
+                {
+                        //idk what to put here yet
+                }
+        void giveRaise();
+
+
+}
+
+
+public class Employee extends Person implements BeginDay(){
+        Void LogIn();
+        Void LogOut();
+        UpdatePersonalInformation();
+}
+
+
+
+
+Interface BeginDay
+{
+        drinkBeverage (ListA);
+        readReports (List B);
+        attendMeetings (List C);
+
+
+
+
+
+
+}
