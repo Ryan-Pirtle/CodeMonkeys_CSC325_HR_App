@@ -1,8 +1,9 @@
 public class Person {
+    //instance variables
     private String name;
     private int age;
      
-    //constructor with mandatory assignment of name and age
+    //constructor with parameters
     Person(String name, int age){
         this.name = name;
         this.age = age;
