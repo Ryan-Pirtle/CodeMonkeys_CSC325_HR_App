@@ -38,7 +38,7 @@ public class Job
     // Displays the details of title and experience in terms of Months
     public void displayDetails() 
     {
-        System.out.print("-- Jobs --");
+        System.out.println("-- Jobs --");
         System.out.println("Job Title: " + Title);
         System.out.println("Experience: " + experience + " months");
     }
