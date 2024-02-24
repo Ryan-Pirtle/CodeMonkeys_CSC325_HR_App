@@ -1,15 +1,16 @@
-public class HardSkill{
-    private String title;
+public class HardSkill extends Job{
+    private String skill;
     private String level;
 
-    HardSkill(String title, String level){
-        this.title = title;
+    HardSkill(String name, int age,String title, int experience, String skill, String level){
+        super(name, age, title, experience);
+        this.skill = skill;
         this.level = level;
     }
 
     //mutators
-    public void setTitle(String newTitle){
-    title = newTitle;   
+    public void setSkill(String newskill){
+        skill = newskill;   
     }
     public void setLevel(String newLevel){   
         level = newLevel;
@@ -18,13 +19,15 @@ public class HardSkill{
     public String getLevel(){
         return(level);    
     }
-    public String getTitle(){
-        return(title);    
+    public String getskill(){
+        return(skill);    
     }
-    //
+    //display currnet and parent class properties
+    @Override
     public void displayDetails(){
+        super.displayDetails();
         System.out.print("-- Hard Skills --\n"+
-                            "Title: " + getTitle() +
+                            "skill: " + getskill() +
                             "\nExperience: " + getLevel());
     }
 

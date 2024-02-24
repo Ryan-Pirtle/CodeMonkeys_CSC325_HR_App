@@ -1,13 +1,14 @@
-public class Job
+public class Job extends Person
 {   
     //Variables instantiated 
     private String Title;
     private int experience;
 
     //Constructor for Job class
-    public Job (String Title, int experience)
+    public Job (String name, int age, String title, int experience)
     {
-        this.Title = Title;
+        super(name, age);
+        this.Title = title;
         this.experience = experience;
     }
 
@@ -34,10 +35,12 @@ public class Job
     {
         return experience;
     }
-
+    //Displays parent methods results as well
     // Displays the details of title and experience in terms of Months
+    @Override
     public void displayDetails() 
     {
+        super.displayDetails();
         System.out.println("-- Jobs --");
         System.out.println("Job Title: " + Title);
         System.out.println("Experience: " + experience + " months");
