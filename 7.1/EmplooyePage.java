@@ -5,11 +5,14 @@ import java.awt.GridLayout;
 import java.awt.event.*;
 
 public class EmplooyePage extends JFrame{
-    public EmplooyePage(){
+    public EmplooyePage(TempArrays array){
+        
         setTitle("Employee Page");
         setSize(900, 700);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(null);
+
+        array.readItemsInArray(0);
 
         //JPanels
         JPanel inputPanel = new JPanel();

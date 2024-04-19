@@ -18,7 +18,7 @@ public abstract class BaseEmployee {
         lastName = lName;
     }
     //base constructor needed for all employees 
-    BaseEmployee( int employeeID, String firstName, String lastName, String streetAddress, String city, String state, String zipcode, String phone, String email  ){
+    BaseEmployee(int employeeID, String firstName, String lastName, String streetAddress, String city, String state, String zipcode, String phone, String email ){
         this.employeeID = employeeID;
         this.firstName = firstName;
         this.lastName = lastName;
