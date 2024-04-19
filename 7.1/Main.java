@@ -33,6 +33,7 @@ public class Main {
        tempArrays.addItemToArray(0, new Employee(6, "Ty", "McMullen"));
        tempArrays.readItemsInArray(0);
 
-
+       EmplooyePage page = new EmplooyePage();
+       page.setVisible(true);
     }
 }
