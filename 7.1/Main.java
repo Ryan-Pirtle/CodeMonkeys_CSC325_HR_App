@@ -12,6 +12,8 @@ public class Main {
         //tempArrays.readItemsInArray(0);
         tempArrays.addItemToArray(0, new Employee(3, "Logan", "Owens") );
 
+        Object test = tempArrays.getItemFromArray(0, 1);
+        System.out.println(test);
 
     
 
@@ -25,7 +27,7 @@ public class Main {
        tempArrays.addItemToArray(0, new Employee(6, "Ty", "McMullen"));
       // tempArrays.readItemsInArray(0);
 
-       EmplooyePage page = new EmplooyePage(tempArrays);
+       EmployeePage page = new EmployeePage(tempArrays);
        page.setVisible(true);
     }
 }

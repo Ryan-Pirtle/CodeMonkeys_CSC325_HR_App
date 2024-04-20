@@ -1,11 +1,10 @@
 import javax.swing.*;
 
 import java.awt.Color;
-import java.awt.GridLayout;
-import java.awt.event.*;
+//import java.awt.event.*;
 
-public class EmplooyePage extends JFrame{
-    public EmplooyePage(TempArrays array){
+public class EmployeePage extends JFrame{
+    public EmployeePage(TempArrays array){
         
         setTitle("Employee Page");
         setSize(900, 700);
@@ -32,8 +31,11 @@ public class EmplooyePage extends JFrame{
         JLabel nameLabel = new JLabel("Name: ");
         nameLabel.setBounds(30,50,100,30);
 
-        JTextField nameField = new JTextField();
-        nameField.setBounds(130,50,200,30);
+        JTextField firstNameField = new JTextField();
+        firstNameField.setBounds(130,50,200,30);
+
+        JTextField lastNameField = new JTextField();
+        lastNameField.setBounds(335,50,200,30);
         
         JLabel phoneLabel = new JLabel("Phone: ");
         phoneLabel.setBounds(30,85,100,30);
@@ -43,21 +45,33 @@ public class EmplooyePage extends JFrame{
 
         JLabel emailLabel = new JLabel("Email: ");
         emailLabel.setBounds(30,120,100,30);
+
+        JTextField emailField = new JTextField();
+        emailField.setBounds(130,120,200,30);
         
         JLabel addressLabel = new JLabel("Address: ");
         addressLabel.setBounds(30,155,100,30);
+
+        JTextField addressField = new JTextField();
+        addressField.setBounds(130,155,200,30);
         
         JLabel cityLabel = new JLabel("City: ");
         cityLabel.setBounds(30,190,100,30);
 
+        JTextField cityField = new JTextField();
+        cityField.setBounds(130,190,200,30);
+
         JLabel stateLabel = new JLabel("State: ");
         stateLabel.setBounds(30,225,100,30);
 
+        JTextField stateField = new JTextField();
+        stateField.setBounds(130,225,200,30);
+
         JLabel zipcodeLabel = new JLabel("Address: ");
         zipcodeLabel.setBounds(30,260,100,30);
-        
-        // JTextField usernameField = new JTextField("Test");
-        // usernameField.setBounds(250,0,100,30);
+
+        JTextField zipcodeField = new JTextField();
+        zipcodeField.setBounds(130,260,200,30);
         
         //adds for the infoPanel
         infoPanel.add(nameLabel);
@@ -68,8 +82,15 @@ public class EmplooyePage extends JFrame{
         infoPanel.add(stateLabel);
         infoPanel.add(zipcodeLabel);
 
-        infoPanel.add(nameField);
+        infoPanel.add(lastNameField);
+        infoPanel.add(firstNameField);
         infoPanel.add(phoneField);
+        infoPanel.add(emailField);
+        infoPanel.add(addressField);
+        infoPanel.add(zipcodeField);
+        infoPanel.add(cityField);
+        infoPanel.add(stateField);
+
 
         //components for the inputPanel
         JButton saveBtn = new JButton("Save");
@@ -88,7 +109,6 @@ public class EmplooyePage extends JFrame{
         });
         
         //input panel adds
-        // inputPanel.add(usernameField);
         inputPanel.add(saveBtn);
         inputPanel.add(jobHistoryBtn);
         inputPanel.add(evaluationBtn);
