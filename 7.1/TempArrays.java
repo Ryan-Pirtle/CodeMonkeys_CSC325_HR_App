@@ -84,7 +84,7 @@ public class TempArrays {
         }
     }
 
-    You think a method like this would work?
+    
  // Method to get employee data by employee ID - Logan Owens
     public Object[] getEmployeeDataById(int employeeId) {
         for (Object[] array : arrays) {

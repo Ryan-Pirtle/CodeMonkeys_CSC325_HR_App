@@ -16,7 +16,7 @@ public class Main {
         tempArrays.readItemsInArray(0);
         tempArrays.addItemToArray(0, new Employee(3, "Logan", "Owens") );
 
-        //Logan Owens
+        //Arrays for Evaluation - Logan Owens
         tempArrays.addItemToArray(1, new Evaluation("Dr. Jaxon", "4-12-2024", "Psychotic", "Likes his water bottle too much!"));
         tempArrays.addItemToArray(1, new Evaluation("Dr. Jaxon", "3-26-2022", "Perfect", "Perfect Employee!"));
         tempArrays.addItemToArray(1, new Evaluation("Dr. Tennyson", "2-25-2024", "Mentally Sound", "Is eagerly awaiting a promotion, very relentless about it."));
