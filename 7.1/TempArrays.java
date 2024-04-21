@@ -84,6 +84,22 @@ public class TempArrays {
         }
     }
 
+    You think a method like this would work?
+ // Method to get employee data by employee ID - Logan Owens
+    public Object[] getEmployeeDataById(int employeeId) {
+        for (Object[] array : arrays) {
+            for (Object item : array) {
+                if (item instanceof Employee) {
+                    Employee employee = (Employee) item;
+                    if (employee.getEmployeeId() == employeeId) {
+                        return item;
+                    }
+                }
+            }
+        }
+        System.err.println("Employee not found for ID: " + employeeId);
+        return null;
+
     // Method to add a new array
     //new arrays shuold start as length 1
     public void addArray(Object[] newArray) {
