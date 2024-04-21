@@ -86,7 +86,7 @@ public class TempArrays {
 
     
  // Method to get employee data by employee ID - Logan Owens
-    public Object[] getEmployeeDataById(int employeeId) {
+    public Object[] getEmployeeData(int employeeId) {
         for (Object[] array : arrays) {
             for (Object item : array) {
                 if (item instanceof Employee) {
