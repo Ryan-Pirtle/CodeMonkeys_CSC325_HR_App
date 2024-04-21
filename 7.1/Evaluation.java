@@ -8,8 +8,9 @@ public class Evaluation
 
 
     //Base constructor
-    Evaluation(String evaluator, String dateEval, String mentalState, String notes)
+    Evaluation(int employeeID, String evaluator, String dateEval, String mentalState, String notes)
     {
+        this.employeeID = employeeID;
         this.evaluator = evaluator;
         this.dateEval = dateEval;
         this.mentalState = mentalState;
@@ -37,6 +38,11 @@ public class Evaluation
         return notes;
     }
 
+    public int employeeID() 
+    {
+        return employeeID;
+    }
+
     //Setter Methods
     public void setEvaluator(String evalName)
     {
@@ -56,5 +62,10 @@ public class Evaluation
     public void setNotes(String notes)
     {
         this.notes = notes;
+    }
+
+    public void setEmployeeID(int employeeID) 
+    {
+        this.employeeID = employeeID;
     }
 }
