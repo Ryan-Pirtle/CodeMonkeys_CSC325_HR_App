@@ -24,14 +24,8 @@ public class Main {
         tempArrays.addItemToArray(1, new Evaluation(1102,"Dr. Tennyson", "2-25-2024", "Mentally Sound", "Is eagerly awaiting a promotion, very relentless about it."));
         
 
-        // Edit an item in the second array
-       // tempArrays.editItemInArray(1, 1, "d");
-
-        // Delete an item from the first array
-       // tempArrays.deleteItemFromArray(0, 1);
-
-        // Read items from the first array
-        tempArrays.readItemsInArray(0);
+        //Logan Owens
+        tempArrays.readItemsInArray(1);
 
         // Read items from the second array
        // tempArrays.readItemsInArray(1);
