@@ -17,10 +17,10 @@ public class Main {
         tempArrays.addItemToArray(0, new Employee(3, "Logan", "Owens") );
 
         //Arrays for Evaluation - Logan Owens
-        tempArrays.addItemToArray(1, new Evaluation("Dr. Jaxon", "4-12-2024", "Psychotic", "Likes his water bottle too much!"));
-        tempArrays.addItemToArray(1, new Evaluation("Dr. Jaxon", "3-26-2022", "Perfect", "Perfect Employee!"));
-        tempArrays.addItemToArray(1, new Evaluation("Dr. Tennyson", "2-25-2024", "Mentally Sound", "Is eagerly awaiting a promotion, very relentless about it."));
-
+        tempArrays.addItemToArray(1, new Evaluation(1100,"Dr. Jaxon", "4-12-2024", "Psychotic", "Likes his water bottle too much!"));
+        tempArrays.addItemToArray(1, new Evaluation(1101,"Dr. Jaxon", "3-26-2022", "Perfect", "Perfect Employee!"));
+        tempArrays.addItemToArray(1, new Evaluation(1102,"Dr. Tennyson", "2-25-2024", "Mentally Sound", "Is eagerly awaiting a promotion, very relentless about it."));
+        
 
         // Edit an item in the second array
        // tempArrays.editItemInArray(1, 1, "d");
