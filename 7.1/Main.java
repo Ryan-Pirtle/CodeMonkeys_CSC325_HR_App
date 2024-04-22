@@ -24,13 +24,11 @@ public class Main {
         tempArrays.addItemToArray(1, new Evaluation(1102,"Dr. Tennyson", "2-25-2024", "Mentally Sound", "Is eagerly awaiting a promotion, very relentless about it."));
         
 
-        //Logan Owens
+        //Read items from the Evaluation Arrays - Logan Owens
         tempArrays.readItemsInArray(1);
 
-        // Read items from the second array
-       // tempArrays.readItemsInArray(1);
-
-      // tempArrays.deleteItemFromArray(0, 0);
+        //Deletes items from the Evaluation Arrays - Logan Owens
+      //tempArrays.deleteItemFromArray(1, 1);
 
        tempArrays.addItemToArray(0, new Employee(6, "Ty", "McMullen"));
        tempArrays.readItemsInArray(0);
