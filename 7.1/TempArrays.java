@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-//Ryan Pirtle
+//Adapted from code in class, proper credit to Dr. Jason Owen
 //Logan Owens
 
 public class TempArrays {
