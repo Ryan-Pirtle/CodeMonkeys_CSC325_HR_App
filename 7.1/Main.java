@@ -3,7 +3,7 @@ public class Main {
         // Instantiate TempArrays
         TempArrays tempArrays = new TempArrays();
 
-        // Add some arrays
+        // Add some arrays  
         tempArrays.addArray(new Employee[1]);
        
         
@@ -12,9 +12,7 @@ public class Main {
         //tempArrays.readItemsInArray(0);
         tempArrays.addItemToArray(0, new Employee(3, "Logan", "Owens") );
 
-        Object test = tempArrays.getItemFromArray(0, 1);
-        System.out.println(test);
-
+   
     
 
         // Read items from the first array

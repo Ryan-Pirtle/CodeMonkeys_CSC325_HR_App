@@ -84,17 +84,11 @@ public class TempArrays {
         }
     }
 
-    //looks for an object in a specified array with the passed in id
-    public Object getItemFromArray(int arrayIndex, int itemIndex){
+    //gets a specified array
+    public Object[] getArray(int arrayIndex){
         if (arrayIndex >= 0 && arrayIndex < arrays.size()) {
             Object[] array = arrays.get(arrayIndex);
-            if (itemIndex >= 0 && arrayIndex < array.length){
-                Object item = array[itemIndex];
-                return item;
-            }else {
-                System.err.println("Items index out of bounds");
-                return null;
-            }
+            return array;
         } else {
             System.err.println("Array index out of bounds");
             return null;
@@ -102,7 +96,7 @@ public class TempArrays {
     }
 
     // Method to add a new array
-    //new arrays shuold start as length 1
+    // new arrays should start as length 1
     public void addArray(Object[] newArray) {
         arrays.add(newArray);
     }

@@ -1,9 +1,14 @@
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import java.awt.Color;
 //import java.awt.event.*;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class EmployeePage extends JFrame{
+    private int employeeSelected = 0;
     public EmployeePage(TempArrays array){
         
         setTitle("Employee Page");
@@ -67,11 +72,35 @@ public class EmployeePage extends JFrame{
         JTextField stateField = new JTextField();
         stateField.setBounds(130,225,200,30);
 
-        JLabel zipcodeLabel = new JLabel("Address: ");
+        JLabel zipcodeLabel = new JLabel("Zipcode: ");
         zipcodeLabel.setBounds(30,260,100,30);
 
         JTextField zipcodeField = new JTextField();
         zipcodeField.setBounds(130,260,200,30);
+
+        JLabel testLabel = new JLabel("display: ");
+        testLabel.setBounds(30,295,200,30);
+        infoPanel.add(testLabel);
+
+        JList<Object> myList = new JList<Object>(array.getArray(0));
+        myList.setBounds(335, 85, 300, 300);
+        myList.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e){
+            
+                int index = myList.getSelectedIndex();
+                Object[] employeeArray = array.getArray(0);
+                testLabel.setText(employeeArray[index].toString());
+
+                String aEmployee = employeeArray[index].toString();
+                System.out.println(aEmployee + " before split");
+
+                String[] aSplitEmployee = aEmployee.split(" ");
+                System.out.println(aSplitEmployee[0] + " after split");
+            }
+        });
+        infoPanel.add(myList);
+        
         
         //adds for the infoPanel
         infoPanel.add(nameLabel);
@@ -107,14 +136,22 @@ public class EmployeePage extends JFrame{
         closeBtn.addActionListener(e -> {
             dispose(); // Close frame
         });
-        
+
+        JButton displayButton = new JButton("Display Employee");
+        displayButton.setBounds(275, 0, 100, 30);
+
+       
         //input panel adds
         inputPanel.add(saveBtn);
         inputPanel.add(jobHistoryBtn);
         inputPanel.add(evaluationBtn);
         inputPanel.add(closeBtn);        
+        inputPanel.add(displayButton);
+
 
     }
+
+    
 
 }
 
