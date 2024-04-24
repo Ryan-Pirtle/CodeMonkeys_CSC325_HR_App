@@ -1,5 +1,5 @@
 import java.awt.*;
-import java.awt.evet.*;
+import java.awt.event.*;
 import javax.swing.*;
 
 public class EvaluationPage extends JFrame implements ActionListener 
@@ -45,6 +45,16 @@ public class EvaluationPage extends JFrame implements ActionListener
 
         //Sets the panel to visible
         setVisible(true);
+    }
+
+    public static void main(String[] args) 
+    {
+        SwingUtilities.invokeLater(new Runnable() 
+        {
+            public void run() {
+                new EvaluationPage();
+            }
+        });
     }
 
 }
