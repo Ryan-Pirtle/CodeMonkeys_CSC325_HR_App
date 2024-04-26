@@ -51,7 +51,8 @@ public class EvaluationPage extends JFrame implements ActionListener
     {
         SwingUtilities.invokeLater(new Runnable() 
         {
-            public void run() {
+            public void run() 
+            {
                 new EvaluationPage();
             }
         });
