@@ -4,19 +4,22 @@ import javax.swing.*;
 
 public class EvaluationPage extends JFrame implements ActionListener 
 {
-    public EvaluationPage()
+    //Got to add TempArrays tempArrays in parameter
+    public EvaluationPage(TempArrays tempArrays)
     {
         setTitle("Evaluation Page");
-        setSize(300, 300);
+        setSize(400, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        array.readItemsInArray(1);
+        //array.readItemsInArray(1);
         
         //Panel and buttons being added
-        JPanel panel = new JPanel(new GridLayout(5, 2));
+        JPanel panel = new JPanel(new GridLayout(6, 2));
         JButton btnAddEdit = new JButton("Add/Edit");
         JButton btnClose = new JButton("Close");
+        JButton btnSaveEdits = new JButton("Save");
+        JButton btnReadEval = new JButton("Read Eval");
 
         //Necessary Labels for the Evaluation page
         JLabel evaluatorLabel = new JLabel("Evaluator: ");
@@ -30,6 +33,46 @@ public class EvaluationPage extends JFrame implements ActionListener
         JTextField txtMentalState = new JTextField();
         JTextField txtnotes = new JTextField();
 
+        //Allows the textfields to be editied
+        btnAddEdit.addActionListener(e ->
+        {
+            txtEvaluator.setEditable(true);
+            txtDateEval.setEditable(true);
+            txtMentalState.setEditable(true);
+            txtnotes.setEditable(true);
+        });
+
+        //Save the changes made by edit
+        btnSaveEdits.addActionListener(e ->
+        {
+            txtEvaluator.setEditable(false);
+            txtDateEval.setEditable(false);
+            txtMentalState.setEditable(false);
+            txtnotes.setEditable(false);
+
+            Evaluation evaluation = new Evaluation(1100, txtEvaluator.getText(), txtDateEval.getText(), txtMentalState.getText(), txtnotes.getText());
+
+            tempArrays.addItemToArray(0, evaluation);
+        });
+
+        btnReadEval.addActionListener(e -> 
+        {
+            // Read items from the Evaluation array
+            tempArrays.readItemsInArray(1);
+        });
+
+        //Closes the panel
+        btnClose.addActionListener(e ->
+        {
+            dispose();
+        });
+
+
+        txtEvaluator.setEditable(false);
+        txtDateEval.setEditable(false);
+        txtMentalState.setEditable(false);
+        txtnotes.setEditable(false);
+
         //Adding the components together
         panel.add(evaluatorLabel);
         panel.add(txtEvaluator);
@@ -41,6 +84,8 @@ public class EvaluationPage extends JFrame implements ActionListener
         panel.add(txtnotes);
         panel.add(btnAddEdit);
         panel.add(btnClose);
+        panel.add(btnSaveEdits);
+        panel.add(btnReadEval);
         add(panel);
 
         //Sets the panel to visible
@@ -53,7 +98,9 @@ public class EvaluationPage extends JFrame implements ActionListener
         {
             public void run() 
             {
-                new EvaluationPage();
+                TempArrays tempArrays = new TempArrays();
+                tempArrays.addArray(new Evaluation[1]);
+                new EvaluationPage(tempArrays);
             }
         });
     }

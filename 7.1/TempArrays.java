@@ -101,6 +101,8 @@ public class TempArrays {
         System.err.println("Employee not found for ID: " + employeeId);
         return null;
 
+    }
+
     // Method to add a new array
     //new arrays shuold start as length 1
     public void addArray(Object[] newArray) {

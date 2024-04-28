@@ -1,6 +1,7 @@
 public class Evaluation 
 {
     //Setting variables
+    private int employeeID;
     private String evaluator;
     private String dateEval;
     private String mentalState;
