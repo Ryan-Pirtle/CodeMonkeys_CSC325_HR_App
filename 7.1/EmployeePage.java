@@ -6,26 +6,38 @@ import java.awt.Color;
 //import java.awt.event.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.List;
 
 public class EmployeePage extends JFrame{
-    private int employeeSelected = 0;
+    public TempArrays AllArray;
+    JPanel inputPanel;
+    JPanel infoPanel;
+    JList<String> myList;
+    JLabel idLabel;
+    
+    JTextField idField;
+    
+    Object[] employeeArray;
+
     public EmployeePage(TempArrays array){
-        
+        AllArray = array;
+        employeeArray =  AllArray.getArray(0);
+
         setTitle("Employee Page");
         setSize(900, 700);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(null);
 
-        array.readItemsInArray(0);
+        AllArray.readItemsInArray(0);
 
         //JPanels
-        JPanel inputPanel = new JPanel();
+        inputPanel = new JPanel();
         inputPanel.setBackground(Color.CYAN);
         inputPanel.setBounds(100, 630, 700, 30);
         inputPanel.setLayout(null);
         add(inputPanel);
         
-        JPanel infoPanel = new JPanel();
+        infoPanel = new JPanel();
         infoPanel.setBackground(Color.CYAN);
         infoPanel.setBounds(100, 25, 700, 500);
         infoPanel.setLayout(null);
@@ -33,76 +45,85 @@ public class EmployeePage extends JFrame{
 
         //componets for infoPanel
         //labels and correspoinding textboxes
-        JLabel nameLabel = new JLabel("Name: ");
+        idLabel = new JLabel("ID: ");
+        idLabel.setBounds(30,15,100,30);
+
+        idField = new JTextField();
+        idField.setBounds(130,15,200,30);
+
+        nameLabel = new JLabel("Name: ");
         nameLabel.setBounds(30,50,100,30);
 
-        JTextField firstNameField = new JTextField();
+        firstNameField = new JTextField();
         firstNameField.setBounds(130,50,200,30);
 
-        JTextField lastNameField = new JTextField();
+        lastNameField = new JTextField();
         lastNameField.setBounds(335,50,200,30);
         
-        JLabel phoneLabel = new JLabel("Phone: ");
+        phoneLabel = new JLabel("Phone: ");
         phoneLabel.setBounds(30,85,100,30);
 
-        JTextField phoneField = new JTextField();
+        phoneField = new JTextField();
         phoneField.setBounds(130,85,200,30);
 
-        JLabel emailLabel = new JLabel("Email: ");
+        emailLabel = new JLabel("Email: ");
         emailLabel.setBounds(30,120,100,30);
 
-        JTextField emailField = new JTextField();
+        emailField = new JTextField();
         emailField.setBounds(130,120,200,30);
         
-        JLabel addressLabel = new JLabel("Address: ");
+        addressLabel = new JLabel("Address: ");
         addressLabel.setBounds(30,155,100,30);
 
-        JTextField addressField = new JTextField();
+        addressField = new JTextField();
         addressField.setBounds(130,155,200,30);
         
-        JLabel cityLabel = new JLabel("City: ");
+        cityLabel = new JLabel("City: ");
         cityLabel.setBounds(30,190,100,30);
 
-        JTextField cityField = new JTextField();
+        cityField = new JTextField();
         cityField.setBounds(130,190,200,30);
 
-        JLabel stateLabel = new JLabel("State: ");
+        stateLabel = new JLabel("State: ");
         stateLabel.setBounds(30,225,100,30);
 
-        JTextField stateField = new JTextField();
+        stateField = new JTextField();
         stateField.setBounds(130,225,200,30);
 
-        JLabel zipcodeLabel = new JLabel("Zipcode: ");
+        zipcodeLabel = new JLabel("Zipcode: ");
         zipcodeLabel.setBounds(30,260,100,30);
 
-        JTextField zipcodeField = new JTextField();
+        zipcodeField = new JTextField();
         zipcodeField.setBounds(130,260,200,30);
 
-        JLabel testLabel = new JLabel("display: ");
+        testLabel = new JLabel("display: ");
         testLabel.setBounds(30,295,200,30);
         infoPanel.add(testLabel);
 
-        JList<Object> myList = new JList<Object>(array.getArray(0));
+        myList = new JList<String>(getIDandNameOfAll());
         myList.setBounds(335, 85, 300, 300);
         myList.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e){
-            
                 int index = myList.getSelectedIndex();
-                Object[] employeeArray = array.getArray(0);
-                testLabel.setText(employeeArray[index].toString());
+
+                String[] splitEmployee = getASplitEmployee(index);
+                
+                testLabel.setText(getEmployee(index));
 
                 String aEmployee = employeeArray[index].toString();
                 System.out.println(aEmployee + " before split");
 
                 String[] aSplitEmployee = aEmployee.split(" ");
-                System.out.println(aSplitEmployee[0] + " after split");
+                System.out.println(aSplitEmployee[0] + aSplitEmployee[1] + " after split");
             }
         });
         infoPanel.add(myList);
         
         
         //adds for the infoPanel
+        //labels
+        infoPanel.add(idLabel);
         infoPanel.add(nameLabel);
         infoPanel.add(phoneLabel);
         infoPanel.add(emailLabel);
@@ -111,6 +132,8 @@ public class EmployeePage extends JFrame{
         infoPanel.add(stateLabel);
         infoPanel.add(zipcodeLabel);
 
+        //fields
+        infoPanel.add(idField);
         infoPanel.add(lastNameField);
         infoPanel.add(firstNameField);
         infoPanel.add(phoneField);
@@ -151,7 +174,46 @@ public class EmployeePage extends JFrame{
 
     }
 
-    
+    public String getEmployee(int index){
+        return employeeArray[index].toString();
+    }
+
+    public String[] getASplitEmployee(int index){
+        String aEmployee = getEmployee(index);
+        String[] aSplitEmployee = aEmployee.split(" ");
+        return aSplitEmployee;
+    }
+
+    public setFieldsToEmployee(int index){
+                idField.setText(splitEmployee[0]);
+                firstNameField.setText(splitEmployee[1]);
+                lastNameField.setText(splitEmployee[2]);
+                addressField.setText(splitEmployee[3]);
+                cityField.setText(splitEmployee[4]);
+                stateField.setText(splitEmployee[5]);
+                zipcodeField.setText(splitEmployee[6]);
+                phoneField.setText(splitEmployee[7]);
+                emailField.setText(splitEmployee[8]);
+    }
+
+    public String[] getIDandNameOfAll(){
+        ArrayList<String> eStrings = new ArrayList<String>();
+
+        for(int i = 0; i<employeeArray.length; i++){
+
+            String[] aSplitEmployee = getASplitEmployee(i);
+            String firstThree = aSplitEmployee[0] + " " + aSplitEmployee[1] + " " +  aSplitEmployee[2];
+            eStrings.add(firstThree);
+
+        }
+        
+        String test = eStrings.toString();
+        // test = test.replaceAll("[", "");
+        // test = test.replaceAll("]", "");
+        String[] allEmployees = test.split(", ");
+        
+        return allEmployees;
+    }
 
 }
 

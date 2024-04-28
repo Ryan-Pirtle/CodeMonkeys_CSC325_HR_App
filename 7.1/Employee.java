@@ -12,7 +12,7 @@ public class Employee extends BaseEmployee {
 
     @Override
     public String toString(){
-        return this.getEmployeeID() + " " + this.getFirstName() + " " + this.getLastName();
+        return this.getEmployeeID() + " " + this.getFirstName() + " " + this.getLastName()+ " " + this.getStreetAddress()+ " " + this.getCity()+ " " + this.getState() + " " + this.getZipcode() + " " + this.getPhone() + " " + this.getEmail();
     }
     
 }

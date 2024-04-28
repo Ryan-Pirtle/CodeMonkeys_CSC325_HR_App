@@ -5,27 +5,15 @@ public class Main {
 
         // Add some arrays  
         tempArrays.addArray(new Employee[1]);
-       
-        
-        // Add an item to the first array
-        tempArrays.addItemToArray(0, new Employee(5, "Ryan", "Pirtle") );
-        //tempArrays.readItemsInArray(0);
+               
+        tempArrays.addItemToArray(0, new Employee(5, "Ryan", "Pirtle", "213roaddr", "paducah", "KY", "43003", "732-324-1234", "email@email.com" ) );
+
         tempArrays.addItemToArray(0, new Employee(3, "Logan", "Owens") );
 
-   
-    
+        tempArrays.addItemToArray(0, new Employee(6, "Ty", "McMullen"));
+        // tempArrays.readItemsInArray(0);
 
-        // Read items from the first array
-        //tempArrays.readItemsInArray(0);
-
-        // Read items from the second array
-       // tempArrays.readItemsInArray(1);
-
-
-       tempArrays.addItemToArray(0, new Employee(6, "Ty", "McMullen"));
-      // tempArrays.readItemsInArray(0);
-
-       EmployeePage page = new EmployeePage(tempArrays);
-       page.setVisible(true);
+        EmployeePage page = new EmployeePage(tempArrays);
+        page.setVisible(true);
     }
 }
