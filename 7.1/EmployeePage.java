@@ -219,10 +219,10 @@ public class EmployeePage extends JFrame{
 
         }
         
-        String test = eStrings.toString();
-        // test = test.replaceAll("[", "");
-        // test = test.replaceAll("]", "");
-        String[] allEmployees = test.split(", ");
+        String employees = eStrings.toString();
+        employees = employees.replace("[", "");
+        employees = employees.replace("]", "");
+        String[] allEmployees = employees.split(", ");
         
         return allEmployees;
     }
