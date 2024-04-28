@@ -13,10 +13,26 @@ public class EmployeePage extends JFrame{
     JPanel inputPanel;
     JPanel infoPanel;
     JList<String> myList;
+    
     JLabel idLabel;
+    JLabel nameLabel;
+    JLabel emailLabel;
+    JLabel addressLabel;
+    JLabel cityLabel;
+    JLabel stateLabel;
+    JLabel zipcodeLabel;
+    JLabel phoneLabel;
     
     JTextField idField;
-    
+    JTextField firstNameField;
+    JTextField lastNameField;
+    JTextField emailField;
+    JTextField addressField;
+    JTextField cityField;
+    JTextField stateField;
+    JTextField zipcodeField;
+    JTextField phoneField;
+
     Object[] employeeArray;
 
     public EmployeePage(TempArrays array){
@@ -96,26 +112,13 @@ public class EmployeePage extends JFrame{
         zipcodeField = new JTextField();
         zipcodeField.setBounds(130,260,200,30);
 
-        testLabel = new JLabel("display: ");
-        testLabel.setBounds(30,295,200,30);
-        infoPanel.add(testLabel);
-
         myList = new JList<String>(getIDandNameOfAll());
         myList.setBounds(335, 85, 300, 300);
         myList.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e){
                 int index = myList.getSelectedIndex();
-
-                String[] splitEmployee = getASplitEmployee(index);
-                
-                testLabel.setText(getEmployee(index));
-
-                String aEmployee = employeeArray[index].toString();
-                System.out.println(aEmployee + " before split");
-
-                String[] aSplitEmployee = aEmployee.split(" ");
-                System.out.println(aSplitEmployee[0] + aSplitEmployee[1] + " after split");
+                setFieldsToEmployee(index);
             }
         });
         infoPanel.add(myList);
@@ -184,16 +187,18 @@ public class EmployeePage extends JFrame{
         return aSplitEmployee;
     }
 
-    public setFieldsToEmployee(int index){
-                idField.setText(splitEmployee[0]);
-                firstNameField.setText(splitEmployee[1]);
-                lastNameField.setText(splitEmployee[2]);
-                addressField.setText(splitEmployee[3]);
-                cityField.setText(splitEmployee[4]);
-                stateField.setText(splitEmployee[5]);
-                zipcodeField.setText(splitEmployee[6]);
-                phoneField.setText(splitEmployee[7]);
-                emailField.setText(splitEmployee[8]);
+    public void setFieldsToEmployee(int index){
+        String[] splitEmployee = getASplitEmployee(index);
+
+        idField.setText(splitEmployee[0]);
+        firstNameField.setText(splitEmployee[1]);
+        lastNameField.setText(splitEmployee[2]);
+        addressField.setText(splitEmployee[3]);
+        cityField.setText(splitEmployee[4]);
+        stateField.setText(splitEmployee[5]);
+        zipcodeField.setText(splitEmployee[6]);
+        phoneField.setText(splitEmployee[7]);
+        emailField.setText(splitEmployee[8]);
     }
 
     public String[] getIDandNameOfAll(){
