@@ -34,6 +34,12 @@ public class EmployeePage extends JFrame{
     JTextField phoneField;
 
     JButton saveBtn;
+    JButton clearButton;
+    JButton addButton;
+    JButton closeBtn;
+    JButton evaluationBtn;
+    JButton jobHistoryBtn;
+    JButton deleteButton;
 
     Object[] employeeArray;
 
@@ -155,29 +161,46 @@ public class EmployeePage extends JFrame{
             editEmployee(myList.getSelectedIndex());
         });
 
-        JButton jobHistoryBtn = new JButton("Job History");
-        jobHistoryBtn.setBounds(175,0,100,30);
+        jobHistoryBtn = new JButton("Job History");
+        jobHistoryBtn.setBounds(100,0,100,30);
 
-        JButton evaluationBtn = new JButton("Evaluation");
-        evaluationBtn.setBounds(425,0,100,30);
+        evaluationBtn = new JButton("Evaluation");
+        evaluationBtn.setBounds(200,0,100,30);
 
-        JButton closeBtn = new JButton("Close");
-        closeBtn.setBounds(600, 0, 100, 30);
+        closeBtn = new JButton("Close");
+        closeBtn.setBounds(300, 0, 100, 30);
         closeBtn.addActionListener(e -> {
             dispose(); // Close frame
         });
 
-        JButton displayButton = new JButton("Display Employee");
-        displayButton.setBounds(275, 0, 100, 30);
+        addButton = new JButton("Add");
+        addButton.setBounds(400, 0, 100, 30);
+        addButton.addActionListener(e -> {
+            addEmployee();
+        });
+        
+        clearButton = new JButton("Clear fields");
+        clearButton.setBounds(500, 0, 100, 30);
+        clearButton.addActionListener(e -> {
+            //sets text field to empty and deselcts current jlist index
+            clearFields();
+            myList.clearSelection();
+        });
 
-       
+        deleteButton = new JButton("Delete");
+        deleteButton.setBounds(600, 0, 100, 30);
+        deleteButton.addActionListener(e -> {
+            deleteEmployee(myList.getSelectedIndex());
+        });
+   
         //input panel adds
         inputPanel.add(saveBtn);
         inputPanel.add(jobHistoryBtn);
         inputPanel.add(evaluationBtn);
         inputPanel.add(closeBtn);        
-        inputPanel.add(displayButton);
-
+        inputPanel.add(addButton);
+        inputPanel.add(clearButton);
+        inputPanel.add(deleteButton);
     }
 
     //get a specific employee
@@ -228,11 +251,45 @@ public class EmployeePage extends JFrame{
     }
 
     public void editEmployee(int itemIndex){
-        Employee newItem = new Employee(Integer.parseInt(idField.getText()), firstNameField.getText(), lastNameField.getText(), addressField.getText(), cityField.getText(), stateField.getText(), zipcodeField.getText(), phoneField.getText(), emailField.getText());
+        Employee newItem = new Employee(Integer.parseInt(idField.getText()), firstNameField.getText(), 
+        lastNameField.getText(), addressField.getText(), cityField.getText(), stateField.getText(), 
+        zipcodeField.getText(), phoneField.getText(), emailField.getText());
 
         AllArray.editItemInArray(0, itemIndex, newItem);
         employeeArray =  AllArray.getArray(0);
     }
 
+    public void clearFields(){
+        idField.setText("");
+        firstNameField.setText("");
+        lastNameField.setText("");
+        addressField.setText("");
+        cityField.setText("");
+        stateField.setText("");
+        zipcodeField.setText("");
+        phoneField.setText("");
+        emailField.setText("");
+    }
+    
+    public void addEmployee(){
+        Employee newEmployee = new Employee(Integer.parseInt(idField.getText()), firstNameField.getText(), 
+        lastNameField.getText(), addressField.getText(), cityField.getText(), stateField.getText(), 
+        zipcodeField.getText(), phoneField.getText(), emailField.getText());
+
+        AllArray.addItemToArray(0, newEmployee);
+        employeeArray = AllArray.getArray(0);
+        System.out.println(employeeArray[employeeArray.length-1]);
+        myList.setListData(getIDandNameOfAll());
+    }
+
+    public void deleteEmployee(int index){
+        AllArray.deleteItemFromArray(0, index);
+        //maybe add this?
+        // AllArray.deleteItemFromArray(1, index);
+        // AllArray.deleteItemFromArray(2, index);
+        employeeArray = AllArray.getArray(0);
+        myList.setListData(getIDandNameOfAll());
+
+    }
 }
 
