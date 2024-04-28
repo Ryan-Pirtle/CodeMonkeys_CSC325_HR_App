@@ -33,6 +33,8 @@ public class EmployeePage extends JFrame{
     JTextField zipcodeField;
     JTextField phoneField;
 
+    JButton saveBtn;
+
     Object[] employeeArray;
 
     public EmployeePage(TempArrays array){
@@ -123,7 +125,6 @@ public class EmployeePage extends JFrame{
         });
         infoPanel.add(myList);
         
-        
         //adds for the infoPanel
         //labels
         infoPanel.add(idLabel);
@@ -148,8 +149,11 @@ public class EmployeePage extends JFrame{
 
 
         //components for the inputPanel
-        JButton saveBtn = new JButton("Save");
+        saveBtn = new JButton("Save");
         saveBtn.setBounds(0,0,100,30);
+        saveBtn.addActionListener(e -> {
+            editEmployee(myList.getSelectedIndex());
+        });
 
         JButton jobHistoryBtn = new JButton("Job History");
         jobHistoryBtn.setBounds(175,0,100,30);
@@ -174,19 +178,21 @@ public class EmployeePage extends JFrame{
         inputPanel.add(closeBtn);        
         inputPanel.add(displayButton);
 
-
     }
 
+    //get a specific employee
     public String getEmployee(int index){
         return employeeArray[index].toString();
     }
 
+    //split up a specific empolyee into an array of strings
     public String[] getASplitEmployee(int index){
         String aEmployee = getEmployee(index);
         String[] aSplitEmployee = aEmployee.split(" ");
         return aSplitEmployee;
     }
 
+    //set the texboxes equal to an employees data
     public void setFieldsToEmployee(int index){
         String[] splitEmployee = getASplitEmployee(index);
 
@@ -201,6 +207,7 @@ public class EmployeePage extends JFrame{
         emailField.setText(splitEmployee[8]);
     }
 
+    //get the id, first name, and last name of every employee
     public String[] getIDandNameOfAll(){
         ArrayList<String> eStrings = new ArrayList<String>();
 
@@ -218,6 +225,13 @@ public class EmployeePage extends JFrame{
         String[] allEmployees = test.split(", ");
         
         return allEmployees;
+    }
+
+    public void editEmployee(int itemIndex){
+        Employee newItem = new Employee(Integer.parseInt(idField.getText()), firstNameField.getText(), lastNameField.getText(), addressField.getText(), cityField.getText(), stateField.getText(), zipcodeField.getText(), phoneField.getText(), emailField.getText());
+
+        AllArray.editItemInArray(0, itemIndex, newItem);
+        employeeArray =  AllArray.getArray(0);
     }
 
 }
