@@ -69,4 +69,9 @@ public class Evaluation
     {
         this.employeeID = employeeID;
     }
+
+    public String toString()
+    {
+        return this.evaluator() + " " + this.dateEval() + " " + this.mentalState() + " " + this.notes();
+    }
 }
