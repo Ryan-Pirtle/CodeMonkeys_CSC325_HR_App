@@ -6,9 +6,10 @@ import javax.swing.event.ListSelectionListener;
 
 public class EvaluationPage extends JFrame implements ActionListener 
 {
-    //Got to add TempArrays tempArrays in parameter
+
     public EvaluationPage(TempArrays tempArrays)
     {
+
         setTitle("Evaluation Page");
         setSize(700, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
