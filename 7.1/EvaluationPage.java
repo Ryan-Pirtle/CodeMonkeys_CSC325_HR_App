@@ -1,3 +1,4 @@
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -9,7 +10,6 @@ public class EvaluationPage extends JFrame implements ActionListener
 
     public EvaluationPage(TempArrays tempArrays)
     {
-
         setTitle("Evaluation Page");
         setSize(700, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -95,6 +95,18 @@ public class EvaluationPage extends JFrame implements ActionListener
         btnReadEval.setBounds(500, 430, 100, 30);
         buttonPanel.add(btnReadEval);
 
+        // Create a JComboBox to display available evaluations
+        JComboBox<Integer> evaluationList = new JComboBox<>();
+        evaluationList.setBounds(100, 200, 200, 30);
+        panel.add(evaluationList);
+
+        // Populate the JComboBox with available evaluation IDs
+        for (int i = 0; i < evaluationArray.length; i++) 
+        {
+            Evaluation eval = (Evaluation) evaluationArray[i];
+            evaluationList.addItem(eval.getEmployeeID());
+        }
+
 
         //Allows the textfields to be editied
         btnAddEdit.addActionListener(e ->
@@ -129,7 +141,6 @@ public class EvaluationPage extends JFrame implements ActionListener
             JOptionPane.showMessageDialog(this, "Data saved!");
         });
 
-        
         //Closes the panel
         btnClose.addActionListener(e ->
         {
