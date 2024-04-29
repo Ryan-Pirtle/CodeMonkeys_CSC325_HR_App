@@ -1,4 +1,3 @@
-
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -30,41 +29,50 @@ public class EvaluationPage extends JFrame implements ActionListener
         add(buttonPanel);
 
         //Necessary Labels for the Evaluation page
+        JLabel idLabel = new JLabel("ID");
+        idLabel.setBounds(20, 15, 130, 30);
+        panel.add(idLabel);
+
         JLabel evaluatorLabel = new JLabel("Evaluator: ");
-        evaluatorLabel.setBounds(20, 15, 130, 30);
+        evaluatorLabel.setBounds(20, 50, 130, 30);
         panel.add(evaluatorLabel);
 
         JLabel dateLabel = new JLabel("Date of Evaluation: ");
-        dateLabel.setBounds(20, 50, 130, 30);
+        dateLabel.setBounds(20, 85, 130, 30);
         panel.add(dateLabel);
 
         JLabel mentalLabel = new JLabel("Mental State: ");
-        mentalLabel.setBounds(20, 85, 130, 30);
+        mentalLabel.setBounds(20, 120, 130, 30);
         panel.add(mentalLabel);
         
 
         JLabel noteLabel = new JLabel("Notes: ");
-        noteLabel.setBounds(20, 120, 130, 30);
+        noteLabel.setBounds(20, 155, 130, 30);
         panel.add(noteLabel);
 
         //Necessary Textfields for the Evaluation page
+        JTextField txtID = new JTextField();
+        txtID.setBounds(220, 15, 200, 30);
+        txtID.setEditable(false);
+        panel.add(txtID);
+
         JTextField txtEvaluator = new JTextField();
-        txtEvaluator.setBounds(220, 15, 200, 30);
+        txtEvaluator.setBounds(220, 50, 200, 30);
         txtEvaluator.setEditable(false);
         panel.add(txtEvaluator);
 
         JTextField txtDateEval = new JTextField();
-        txtDateEval.setBounds(220, 50, 200, 30);
+        txtDateEval.setBounds(220, 85, 200, 30);
         txtDateEval.setEditable(false);
         panel.add(txtDateEval);
 
         JTextField txtMentalState = new JTextField();
-        txtMentalState.setBounds(220, 85, 200, 30);
+        txtMentalState.setBounds(220, 120, 200, 30);
         txtMentalState.setEditable(false);
         panel.add(txtMentalState);
 
         JTextField txtNotes = new JTextField();
-        txtNotes.setBounds(220, 120, 200, 30);
+        txtNotes.setBounds(220, 155, 200, 30);
         txtNotes.setEditable(false);
         panel.add(txtNotes);
 
@@ -73,13 +81,14 @@ public class EvaluationPage extends JFrame implements ActionListener
         btnAddEdit.setBounds(100, 430, 100, 30);
         buttonPanel.add(btnAddEdit);
 
+        JButton btnSaveEdits = new JButton("Save");
+        btnSaveEdits.setBounds(200, 430, 100, 30);
+        buttonPanel.add(btnSaveEdits);
+
         JButton btnClose = new JButton("Close");
-        btnClose.setBounds(200, 430, 100, 30);
+        btnClose.setBounds(400, 430, 100, 30);
         buttonPanel.add(btnClose);
 
-        JButton btnSaveEdits = new JButton("Save");
-        btnSaveEdits.setBounds(400, 430, 100, 30);
-        buttonPanel.add(btnSaveEdits);
 
         JButton btnReadEval = new JButton("Read Eval");
         btnReadEval.setBounds(500, 430, 100, 30);
@@ -89,6 +98,7 @@ public class EvaluationPage extends JFrame implements ActionListener
         //Allows the textfields to be editied
         btnAddEdit.addActionListener(e ->
         {
+            txtID.setEditable(true);
             txtEvaluator.setEditable(true);
             txtDateEval.setEditable(true);
             txtMentalState.setEditable(true);
@@ -98,16 +108,18 @@ public class EvaluationPage extends JFrame implements ActionListener
         //Save the changes made by edit
         btnSaveEdits.addActionListener(e ->
         {
+            txtID.setEditable(false);
             txtEvaluator.setEditable(false);
             txtDateEval.setEditable(false);
             txtMentalState.setEditable(false);
             txtNotes.setEditable(false);
 
-            Evaluation evaluation = new Evaluation(1100, txtEvaluator.getText(), txtDateEval.getText(), txtMentalState.getText(), txtNotes.getText());
+            Evaluation evaluation = new Evaluation(Integer.parseInt(txtID.getText()), txtEvaluator.getText(), txtDateEval.getText(), txtMentalState.getText(), txtNotes.getText());
 
             tempArrays.addItemToArray(0, evaluation);
 
             //Clear the text fields
+            txtID.setText("");
             txtEvaluator.setText("");
             txtDateEval.setText("");
             txtMentalState.setText("");

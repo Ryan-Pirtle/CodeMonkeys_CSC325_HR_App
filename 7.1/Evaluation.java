@@ -72,6 +72,6 @@ public class Evaluation
 
     public String toString()
     {
-        return this.evaluator() + " " + this.dateEval() + " " + this.mentalState() + " " + this.notes();
+        return this.employeeID() + " " + this.evaluator() + " " + this.dateEval() + " " + this.mentalState() + " " + this.notes();
     }
 }
