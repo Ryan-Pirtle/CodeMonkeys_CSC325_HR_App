@@ -52,23 +52,25 @@ public class EmployeePage extends JFrame{
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(null);
 
-        AllArray.readItemsInArray(0);
-
         //JPanels
+
+        //inputPanel will contain the all the buttons at the bottom of the page
         inputPanel = new JPanel();
         inputPanel.setBackground(Color.CYAN);
         inputPanel.setBounds(100, 630, 700, 30);
         inputPanel.setLayout(null);
         add(inputPanel);
         
+        //infopanel will contain the list of employees and all the textboxes/labels
+        //in the center of the page
         infoPanel = new JPanel();
         infoPanel.setBackground(Color.CYAN);
         infoPanel.setBounds(100, 25, 700, 500);
         infoPanel.setLayout(null);
         add(infoPanel);
 
-        //componets for infoPanel
-        //labels and correspoinding textboxes
+        //components for infoPanel
+        //labels and corresponding textboxes
         idLabel = new JLabel("ID: ");
         idLabel.setBounds(30,15,100,30);
 
@@ -123,6 +125,8 @@ public class EmployeePage extends JFrame{
         myList = new JList<String>(getIDandNameOfAll());
         myList.setBounds(335, 85, 300, 300);
         myList.addListSelectionListener(new ListSelectionListener() {
+            //whenever an employee in the list is clicked on get the index of 
+            //that employee and set the textfields to that employees data
             @Override
             public void valueChanged(ListSelectionEvent e){
                 int index = myList.getSelectedIndex();
@@ -157,6 +161,7 @@ public class EmployeePage extends JFrame{
         //components for the inputPanel
         saveBtn = new JButton("Save");
         saveBtn.setBounds(0,0,100,30);
+        //use the contents of the textbox to save changes to an employee whenever clicked
         saveBtn.addActionListener(e -> {
             editEmployee(myList.getSelectedIndex());
         });
@@ -175,6 +180,7 @@ public class EmployeePage extends JFrame{
 
         addButton = new JButton("Add");
         addButton.setBounds(400, 0, 100, 30);
+        //use the contents of the textboxes to create a new employee whenever clicked
         addButton.addActionListener(e -> {
             addEmployee();
         });
@@ -190,6 +196,7 @@ public class EmployeePage extends JFrame{
         deleteButton = new JButton("Delete");
         deleteButton.setBounds(600, 0, 100, 30);
         deleteButton.addActionListener(e -> {
+            //delte employee at the selected index in the jlist
             deleteEmployee(myList.getSelectedIndex());
         });
    
@@ -234,6 +241,7 @@ public class EmployeePage extends JFrame{
     public String[] getIDandNameOfAll(){
         ArrayList<String> eStrings = new ArrayList<String>();
 
+        //loop through and get the id, first name, and last name of each employee
         for(int i = 0; i<employeeArray.length; i++){
 
             String[] aSplitEmployee = getASplitEmployee(i);
@@ -242,24 +250,38 @@ public class EmployeePage extends JFrame{
 
         }
         
+        //get arraylist as string
         String employees = eStrings.toString();
+        //clean list
         employees = employees.replace("[", "");
         employees = employees.replace("]", "");
+        //split string into individual employees
         String[] allEmployees = employees.split(", ");
         
         return allEmployees;
     }
 
-    public void editEmployee(int itemIndex){
+    public Employee createNewEmployee(){
+        //create new employee object with data in textfields
         Employee newItem = new Employee(Integer.parseInt(idField.getText()), firstNameField.getText(), 
         lastNameField.getText(), addressField.getText(), cityField.getText(), stateField.getText(), 
         zipcodeField.getText(), phoneField.getText(), emailField.getText());
 
-        AllArray.editItemInArray(0, itemIndex, newItem);
-        employeeArray =  AllArray.getArray(0);
+        return newItem;
     }
 
+    public void editEmployee(int itemIndex){
+        //create new employee object with data in textfields
+        Employee newItem = createNewEmployee();
+        
+        //use the method in the tempArrays class to relpace old employee
+        AllArray.editItemInArray(0, itemIndex, newItem);
+        //update current array
+        employeeArray =  AllArray.getArray(0);
+    }
+    
     public void clearFields(){
+        // empty the text fields
         idField.setText("");
         firstNameField.setText("");
         lastNameField.setText("");
@@ -272,22 +294,25 @@ public class EmployeePage extends JFrame{
     }
     
     public void addEmployee(){
-        Employee newEmployee = new Employee(Integer.parseInt(idField.getText()), firstNameField.getText(), 
-        lastNameField.getText(), addressField.getText(), cityField.getText(), stateField.getText(), 
-        zipcodeField.getText(), phoneField.getText(), emailField.getText());
-
+        //new employee created using data from textfields
+        Employee newEmployee = createNewEmployee();
+        //use the method from temparrays to add a new employee object to the array
         AllArray.addItemToArray(0, newEmployee);
+        //update current array
         employeeArray = AllArray.getArray(0);
-        System.out.println(employeeArray[employeeArray.length-1]);
+        //update list with new employee
         myList.setListData(getIDandNameOfAll());
     }
 
     public void deleteEmployee(int index){
+        //use method from temparrays to delete an employee
         AllArray.deleteItemFromArray(0, index);
         //maybe add this?
         // AllArray.deleteItemFromArray(1, index);
         // AllArray.deleteItemFromArray(2, index);
+        //update curent array
         employeeArray = AllArray.getArray(0);
+        //update list
         myList.setListData(getIDandNameOfAll());
 
     }
