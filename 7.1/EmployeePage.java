@@ -122,6 +122,12 @@ public class EmployeePage extends JFrame{
         zipcodeField = new JTextField();
         zipcodeField.setBounds(130,260,200,30);
 
+        String[] ex = new String[5];
+        for(int i = 0; i<employeeArray.length; i++){
+            ex[i] = employeeArray[i].toString();
+        }
+        
+
         myList = new JList<String>(getIDandNameOfAll());
         myList.setBounds(335, 85, 300, 300);
         myList.addListSelectionListener(new ListSelectionListener() {
@@ -171,6 +177,9 @@ public class EmployeePage extends JFrame{
 
         evaluationBtn = new JButton("Evaluation");
         evaluationBtn.setBounds(200,0,100,30);
+        evaluationBtn.addActionListener(e -> {
+            EvaluationPage page = new EvaluationPage(AllArray);
+        });
 
         closeBtn = new JButton("Close");
         closeBtn.setBounds(300, 0, 100, 30);
