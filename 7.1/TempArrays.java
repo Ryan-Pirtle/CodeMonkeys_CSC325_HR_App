@@ -70,17 +70,32 @@ public class TempArrays {
         }
     }
 
-    // Method to read all the items in an array
-    public void readItemsInArray(int arrayIndex) {
+    // Method to read all the items in an array - Ryan Pirtle
+    //made it so it returns instead of printing to console - ty m
+    public String readItemsInArray(int arrayIndex) {
         if (arrayIndex >= 0 && arrayIndex < arrays.size()) {
             Object[] array = arrays.get(arrayIndex);
-            System.out.print("Items in array " + arrayIndex + ": ");
+            String output = ("Items in array " + arrayIndex + ": ");
             for (Object item : array) {
-                System.out.print(item + " ");
+                output += (item + ", ");
+                
             }
-            System.out.println();
+            return output;
         } else {
-            System.err.println("Array index out of bounds");
+            return("Array index out of bounds");
+        }
+        
+    }
+    //method to read a specific index from an array -ty m
+    public String readItemInArray(int arrayIndex, int arrayArrayIndex) {
+        if (arrayIndex >= 0 && arrayIndex < arrays.size()) {
+            Object[] array = arrays.get(arrayIndex);
+            String output = ("Item " + arrayArrayIndex + " of array " + arrayIndex + ": ");
+            output += (array[arrayArrayIndex]);
+                
+            return output;
+        } else {
+            return("Array index out of bounds");
         }
     }
 

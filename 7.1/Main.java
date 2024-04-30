@@ -12,7 +12,7 @@ public class Main {
         
         // Add an item to the first array
         tempArrays.addItemToArray(0, new Employee(5, "Ryan", "Pirtle") );
-        tempArrays.readItemsInArray(0);
+        System.out.println(tempArrays.readItemsInArray(0));
         tempArrays.addItemToArray(0, new Employee(3, "Logan", "Owens") );
 
 
@@ -23,15 +23,18 @@ public class Main {
        // tempArrays.deleteItemFromArray(0, 1);
 
         // Read items from the first array
-        tempArrays.readItemsInArray(0);
+        System.out.println(tempArrays.readItemsInArray(0));
 
         // Read items from the second array
        // tempArrays.readItemsInArray(1);
 
       // tempArrays.deleteItemFromArray(0, 0);
 
-       tempArrays.addItemToArray(0, new Employee(6, "Ty", "McMullen"));
-       tempArrays.readItemsInArray(0);
+      tempArrays.addArray(new Employee[1]);
+
+       tempArrays.addItemToArray(1, new Employee(6, "Ty", "McMullen"));
+       System.out.println(tempArrays.readItemsInArray(1));
+       System.out.println(tempArrays.readItemInArray(1, 0));
 
 
     }
