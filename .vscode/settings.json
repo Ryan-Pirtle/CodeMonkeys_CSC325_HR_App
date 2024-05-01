@@ -1,6 +1,2 @@
 {
     "java.compile.nullAnalysis.mode": "automatic",
-    "java.project.sourcePaths": [
-        "7.1"
-    ]
-}

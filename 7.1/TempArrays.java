@@ -1,5 +1,6 @@
 import java.util.ArrayList;
-//Ryan Pirtle
+//Adapted from code in class, proper credit to Dr. Jason Owen
+//Logan Owens
 
 public class TempArrays {
     private ArrayList<Object[]> arrays;
@@ -79,9 +80,38 @@ public class TempArrays {
                 System.out.print(item + " ");
             }
             System.out.println();
-        } else {
-            System.err.println("Array index out of bounds");
         }
+    }
+    
+    //method to read a specific index from an array -ty m
+    public String readItemInArray(int arrayIndex, int arrayArrayIndex) {
+        if (arrayIndex >= 0 && arrayIndex < arrays.size()) {
+            Object[] array = arrays.get(arrayIndex);
+            String output = ("Item " + arrayArrayIndex + " of array " + arrayIndex + ": ");
+            output += (array[arrayArrayIndex]);
+                
+            return output;
+        } else {
+            return("Array index out of bounds");
+        }
+    }
+
+    
+ // Method to get employee data by employee ID - Logan Owens
+    public Object[] getEmployeeData(int employeeId) {
+        for (Object[] array : arrays) {
+            for (Object item : array) {
+                if (item instanceof Employee) {
+                    Employee employee = (Employee) item;
+                    if (employee.getEmployeeId() == employeeId) {
+                        return item;
+                    }
+                }
+            }
+        }
+        System.err.println("Employee not found for ID: " + employeeId);
+        return null;
+
     }
 
     //gets a specified array
