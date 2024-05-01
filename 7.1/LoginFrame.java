@@ -95,7 +95,7 @@ public class LoginFrame extends JFrame implements ActionListener
         String managerKey = txtManagerKey.getText();
 
         //Validate credentials (you can add your own logic here)
-        if (username.equals("tEmployee325") && password.equals("407Sucks") && managerKey.equals("25654")) 
+        if (username.equals("tEmployee325") && password.equals("407AintfUn!") && managerKey.equals("25654")) 
         {
             JOptionPane.showMessageDialog(this, "Login successful!");
         } //Redirect to the main application page
