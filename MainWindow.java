@@ -1,46 +1,35 @@
-
+package HR_AppJava;
 import javax.swing.*;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionEvent;
-
-import java.awt.*;
-import java.awt.event.*;
-import java.util.ArrayList;
-
 
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.color.*;
 
-public class JobsWindow implements ActionListener{
-    public TempArrays everyArray;
+public class MainWindow{
+        static JMenuBar mb;
         
  
-        
-        public JobsWindow()
+        // JMenu
+        static JMenu x;
+     
+        // Menu items
+        static JMenuItem m1, m2, m3;
+     
+        // create a frame
+        static JFrame f;
+     
+        public static void main(String[] args)
         {
-
-
-
-            /*              
-                 ______     __  __     __    
-                /\  ___\   /\ \/\ \   /\ \   
-                \ \ \__ \  \ \ \_\ \  \ \ \  
-                 \ \_____\  \ \_____\  \ \_\ 
-                  \/_____/   \/_____/   \/_/ 
-                             
-             */
-
-
+     
             // create a frame
-            JFrame f = new JFrame("CodeMonkeys HR App");
+            f = new JFrame("CodeMonkeys HR App");
             f.getContentPane().setBackground(Color.GRAY);
             f.setLayout(null);
             f.setResizable(false);
 
      
             // create a menubar
-            JMenuBar mb = new JMenuBar();
+            mb = new JMenuBar();
             mb.setBackground(Color.GRAY);
      
             // create a menu
@@ -48,9 +37,9 @@ public class JobsWindow implements ActionListener{
             JMenu prefmenu = new JMenu("Preferences");
      
             // create menuitems
-            JMenuItem m1 = new JMenuItem("Load File");
-            JMenuItem m2 = new JMenuItem("Export File");
-            JMenuItem m3 = new JMenuItem("Save");
+            m1 = new JMenuItem("Load File");
+            m2 = new JMenuItem("Export File");
+            m3 = new JMenuItem("Save");
      
             // add menu items to menu
             filemenu.add(m1);
@@ -133,34 +122,6 @@ public class JobsWindow implements ActionListener{
             f.add(levelLabel);
             f.add(softSkill);
             f.add(softSkillLabel);
-
-            
-
-            saveChanges.addActionListener( e->{
-                f.setForeground(Color.GREEN);
-            });
-
-            load.addActionListener(e ->{
-                f.setForeground(Color.BLUE);
-            });
-
-
-
-            
         }
-    /*
-             
-                implementation
-
-             */
-
-
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            // TODO Auto-generated method stub
-            throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
-        }
-
     
 }
