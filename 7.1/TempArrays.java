@@ -1,5 +1,6 @@
 import java.util.ArrayList;
-//Ryan Pirtle
+//Adapted from code in class, proper credit to Dr. Jason Owen
+//Logan Owens
 
 public class TempArrays {
     private ArrayList<Object[]> arrays;
@@ -97,6 +98,24 @@ public class TempArrays {
         } else {
             return("Array index out of bounds");
         }
+    }
+
+    
+ // Method to get employee data by employee ID - Logan Owens
+    public Object[] getEmployeeData(int employeeId) {
+        for (Object[] array : arrays) {
+            for (Object item : array) {
+                if (item instanceof Employee) {
+                    Employee employee = (Employee) item;
+                    if (employee.getEmployeeId() == employeeId) {
+                        return item;
+                    }
+                }
+            }
+        }
+        System.err.println("Employee not found for ID: " + employeeId);
+        return null;
+
     }
 
     // Method to add a new array
