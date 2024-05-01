@@ -174,6 +174,9 @@ public class EmployeePage extends JFrame{
 
         jobHistoryBtn = new JButton("Job History");
         jobHistoryBtn.setBounds(100,0,100,30);
+        jobHistoryBtn.addActionListener(e -> {
+            JobsWindow j = new JobsWindow();
+        });
 
         evaluationBtn = new JButton("Evaluation");
         evaluationBtn.setBounds(200,0,100,30);
