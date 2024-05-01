@@ -114,8 +114,19 @@ public class TempArrays {
 
     }
 
+    //gets a specified array
+    public Object[] getArray(int arrayIndex){
+        if (arrayIndex >= 0 && arrayIndex < arrays.size()) {
+            Object[] array = arrays.get(arrayIndex);
+            return array;
+        } else {
+            System.err.println("Array index out of bounds");
+            return null;
+        }
+    }
+
     // Method to add a new array
-    //new arrays shuold start as length 1
+    // new arrays should start as length 1
     public void addArray(Object[] newArray) {
         arrays.add(newArray);
     }

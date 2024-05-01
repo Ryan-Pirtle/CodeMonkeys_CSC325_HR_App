@@ -10,8 +10,9 @@ public class Employee extends BaseEmployee {
         super(employeeID, firstName, lastName, streetAddress, city, state, zipcode, phone, email);
     }   
 
+    @Override
     public String toString(){
-        return this.getEmployeeID() + " " + this.getFirstName() + " " + this.getLastName();
+        return this.getEmployeeID() + " " + this.getFirstName() + " " + this.getLastName()+ " " + this.getStreetAddress()+ " " + this.getCity()+ " " + this.getState() + " " + this.getZipcode() + " " + this.getPhone() + " " + this.getEmail();
     }
-
+    
 }
