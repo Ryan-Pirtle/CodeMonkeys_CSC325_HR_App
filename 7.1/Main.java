@@ -14,7 +14,7 @@ public class Main {
         
         // Add an item to the first array
         tempArrays.addItemToArray(0, new Employee(5, "Ryan", "Pirtle") );
-        tempArrays.readItemsInArray(0);
+        System.out.println(tempArrays.readItemsInArray(0));
         tempArrays.addItemToArray(0, new Employee(3, "Logan", "Owens") );
 
         //Arrays for Evaluation - Logan Owens
@@ -24,14 +24,31 @@ public class Main {
         tempArrays.addItemToArray(1, new Evaluation(1102,"Dr. Tennyson", "2-25-2024", "Mentally Sound", "Is eagerly awaiting a promotion, very relentless about it."));
         
 
-        //Read items from the Evaluation Arrays - Logan Owens
-        tempArrays.readItemsInArray(1);
+// <<<<<<< Logan_Owens_Branch04
+//         //Read items from the Evaluation Arrays - Logan Owens
+//         tempArrays.readItemsInArray(1);
+// // =======
+// //         // Edit an item in the second array
+// //        // tempArrays.editItemInArray(1, 1, "d");
+
+// //         // Delete an item from the first array
+// //        // tempArrays.deleteItemFromArray(0, 1);
+
+// //         // Read items from the first array
+// //         System.out.println(tempArrays.readItemsInArray(0));
+
+//         // Read items from the second array
+//        // tempArrays.readItemsInArray(1);
+// >>>>>>> main
 
         //Deletes items from the Evaluation Arrays - Logan Owens
       //tempArrays.deleteItemFromArray(1, 1);
 
-       tempArrays.addItemToArray(0, new Employee(6, "Ty", "McMullen"));
-       tempArrays.readItemsInArray(0);
+      tempArrays.addArray(new Employee[1]);
+
+       tempArrays.addItemToArray(1, new Employee(6, "Ty", "McMullen"));
+       System.out.println(tempArrays.readItemsInArray(1));
+       System.out.println(tempArrays.readItemInArray(1, 0));
 
 
     }
