@@ -4,6 +4,8 @@ public class Main {
         // Instantiate TempArrays
         TempArrays tempArrays = new TempArrays();
 
+        JobsWindow j = new JobsWindow();
+        
         // Add some arrays
         tempArrays.addArray(new Employee[1]);
         tempArrays.addArray(new Evaluation[1]);
