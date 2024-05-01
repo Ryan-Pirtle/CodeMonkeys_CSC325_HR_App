@@ -1,26 +1,37 @@
-package HR_AppJava;
+
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionEvent;
+
+import java.awt.*;
+import java.awt.event.*;
+import java.util.ArrayList;
+
 
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.color.*;
 
-public class MainWindow{
-        static JMenuBar mb;
+public class JobsWindow implements ActionListener{
+    public TempArrays everyArray;
         
  
-        // JMenu
-        static JMenu x;
-     
-        // Menu items
-        static JMenuItem m1, m2, m3;
-     
-        // create a frame
-        static JFrame f;
-     
-        public static void main(String[] args)
+        
+        public JobsPage(TempArrays everyArray)
         {
-     
+
+
+
+            /*              
+                 ______     __  __     __    
+                /\  ___\   /\ \/\ \   /\ \   
+                \ \ \__ \  \ \ \_\ \  \ \ \  
+                 \ \_____\  \ \_____\  \ \_\ 
+                  \/_____/   \/_____/   \/_/ 
+                             
+             */
+
+
             // create a frame
             f = new JFrame("CodeMonkeys HR App");
             f.getContentPane().setBackground(Color.GRAY);
@@ -29,7 +40,7 @@ public class MainWindow{
 
      
             // create a menubar
-            mb = new JMenuBar();
+            JMenuBar mb = new JMenuBar();
             mb.setBackground(Color.GRAY);
      
             // create a menu
@@ -37,9 +48,9 @@ public class MainWindow{
             JMenu prefmenu = new JMenu("Preferences");
      
             // create menuitems
-            m1 = new JMenuItem("Load File");
-            m2 = new JMenuItem("Export File");
-            m3 = new JMenuItem("Save");
+            JMenuItem m1 = new JMenuItem("Load File");
+            JMenuItem m2 = new JMenuItem("Export File");
+            JMenuItem m3 = new JMenuItem("Save");
      
             // add menu items to menu
             filemenu.add(m1);
@@ -122,6 +133,31 @@ public class MainWindow{
             f.add(levelLabel);
             f.add(softSkill);
             f.add(softSkillLabel);
+
+            
+
+            saveChanges.addActionListener( e->{
+                placesOfWork.setEditable(false);
+                tasksPerformed.setEditable(false);
+                experience.setEditable(false);
+                jobTitle.setEditable(false);
+                teamRole.setEditable(false);
+                hardSkill.setEditable(false);
+                level.setEditable(false);
+                softSkill.setEditable(false);
+            });
+
+
+
+
+
+            
         }
+    /*
+             
+                implementation
+
+             */
+
     
 }
