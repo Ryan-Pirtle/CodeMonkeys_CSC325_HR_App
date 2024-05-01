@@ -1,15 +1,31 @@
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
+
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+
 public class EvaluationPage extends JFrame implements ActionListener 
 {
 
-    public EvaluationPage(TempArrays tempArrays)
+    public TempArrays everyArray;
+    Object[] evalArray;
+    JList<Integer> evaluationList;
+    JTextField txtID;
+    JTextField txtEvaluator;
+    JTextField txtDateEval;
+    JTextField txtMentalState;
+    JTextField txtNotes;
+
+    public EvaluationPage(TempArrays everyArray)
     {
+        this.everyArray = everyArray;
+        evalArray = everyArray.getArray(1);
+
+
         setTitle("Evaluation Page");
         setSize(700, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -52,27 +68,27 @@ public class EvaluationPage extends JFrame implements ActionListener
         panel.add(noteLabel);
 
         //Necessary Textfields for the Evaluation page
-        JTextField txtID = new JTextField();
+        txtID = new JTextField();
         txtID.setBounds(220, 15, 200, 30);
         txtID.setEditable(false);
         panel.add(txtID);
 
-        JTextField txtEvaluator = new JTextField();
+        txtEvaluator = new JTextField();
         txtEvaluator.setBounds(220, 50, 200, 30);
         txtEvaluator.setEditable(false);
         panel.add(txtEvaluator);
 
-        JTextField txtDateEval = new JTextField();
+        txtDateEval = new JTextField();
         txtDateEval.setBounds(220, 85, 200, 30);
         txtDateEval.setEditable(false);
         panel.add(txtDateEval);
 
-        JTextField txtMentalState = new JTextField();
+        txtMentalState = new JTextField();
         txtMentalState.setBounds(220, 120, 200, 30);
         txtMentalState.setEditable(false);
         panel.add(txtMentalState);
 
-        JTextField txtNotes = new JTextField();
+        txtNotes = new JTextField();
         txtNotes.setBounds(220, 155, 200, 30);
         txtNotes.setEditable(false);
         panel.add(txtNotes);
@@ -96,16 +112,19 @@ public class EvaluationPage extends JFrame implements ActionListener
         buttonPanel.add(btnReadEval);
 
         // Create a JComboBox to display available evaluations
-        JComboBox<Integer> evaluationList = new JComboBox<>();
+        evaluationList = new JList<>();
         evaluationList.setBounds(100, 200, 200, 30);
-        panel.add(evaluationList);
-
-        // Populate the JComboBox with available evaluation IDs
-        for (int i = 0; i < evaluationArray.length; i++) 
+        
+        evaluationList.addListSelectionListener(new ListSelectionListener() 
         {
-            Evaluation eval = (Evaluation) evaluationArray[i];
-            evaluationList.addItem(eval.getEmployeeID());
-        }
+            @Override
+            public void valueChanged(ListSelectionEvent e){
+                int index = evaluationList.getSelectedIndex();
+                setFieldsToEval(index);
+            }
+        }); 
+        
+        panel.add(evaluationList);
 
 
         //Allows the textfields to be editied
@@ -118,6 +137,7 @@ public class EvaluationPage extends JFrame implements ActionListener
             txtNotes.setEditable(true);
         });
 
+
         //Save the changes made by edit
         btnSaveEdits.addActionListener(e ->
         {
@@ -129,7 +149,7 @@ public class EvaluationPage extends JFrame implements ActionListener
 
             Evaluation evaluation = new Evaluation(Integer.parseInt(txtID.getText()), txtEvaluator.getText(), txtDateEval.getText(), txtMentalState.getText(), txtNotes.getText());
 
-            tempArrays.addItemToArray(0, evaluation);
+            everyArray.addItemToArray(0, evaluation);
 
             //Clear the text fields
             txtID.setText("");
@@ -150,6 +170,53 @@ public class EvaluationPage extends JFrame implements ActionListener
         //Sets the panel to visible
         setVisible(true);
     }
+
+    public String getEval(int index)
+    {
+        return evalArray[index].toString();
+    }
+
+    public String[] getASplitEvaluation(int index)
+    {
+        String anEval = getEval(index);
+        String[] aSplitEvaluation = anEval.split(" ");
+        return aSplitEvaluation;
+    }
+
+    public void setFieldstoEval(int index)
+    {
+        String[] splitEval = getASplitEvaluation(index);
+
+        txtID.setText(splitEval[0]);
+        txtEvaluator.setText(splitEval[1]);
+        txtDateEval.setText(splitEval[2]);
+        txtMentalState.setText(splitEval[3]);
+        txtNotes.setText(splitEval[4]);
+    }
+
+    public String[] getID()
+    {
+        ArrayList<String> evStrings = new ArrayList<String>();
+
+        for(int i = 0; i < evalArray.length; i++)
+        { 
+            String[] aSplitEvaluation = getASplitEvaluation(i);
+            String evalID = aSplitEvaluation[0] + " " + aSplitEvaluation[1] + " " + aSplitEvaluation[2];
+            evStrings.add(evalID);
+        }
+
+        //Get arraylist as string
+        String evaluations = evStrings.toString();
+        //Clean list
+        evaluations = evaluations.replace("[", "");
+        evaluations = evaluations.replace("]", "");
+        //Split string into individual Evaluations
+        String[] allEvaluations = evaluations.split(", ");
+        
+        return allEvaluations;
+    }
+
+
 
     public static void main(String[] args) 
     {
